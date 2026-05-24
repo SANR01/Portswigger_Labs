@@ -13,8 +13,8 @@ A normal login process checks both the username and password before granting acc
 Example of a normal query:
 
 sql id="normalquery"
-SELECT * FROM users 
-WHERE username='administrator' 
+SELECT * FROM users <br>
+WHERE username='administrator' <br>
 AND password='mypassword'
 
 ## Recon
@@ -37,16 +37,16 @@ administrator'--
 
 ## Payload Explanation
 
-administrator → target account username
-' → closes the SQL string
+administrator → target account username <br>
+' → closes the SQL string <br>
 -- → comments out the remaining part of the SQL query
 
 This caused the password verification section of the query to be ignored.
 
 ## Modified query behavior:
 
-SELECT * FROM users 
-WHERE username='administrator'-- 
+SELECT * FROM users <br>
+WHERE username='administrator'-- <br> 
 AND password='mypassword'
 
 The application ignored everything after --, including the password check.
@@ -57,18 +57,18 @@ The authentication process was successfully bypassed, and access to the administ
 
 ## Impact
 
-Unauthorized account access
-Authentication bypass vulnerability
+Unauthorized account access <br>
+Authentication bypass vulnerability <br>
 Potential administrative account compromise
 
 ## Mitigation
-Use parameterized queries (prepared statements)
-Validate and sanitize user input
-Avoid directly concatenating user input into SQL queries
+Use parameterized queries (prepared statements) <br>
+Validate and sanitize user input <br>
+Avoid directly concatenating user input into SQL queries <br>
 Implement secure authentication handling
 
 ## Learning Outcome
-Learned how SQL Injection affects login systems
-Practiced request interception using Burp Suite
-Understood authentication bypass techniques
+Learned how SQL Injection affects login systems <br>
+Practiced request interception using Burp Suite <br>
+Understood authentication bypass techniques <br>
 Improved understanding of insecure SQL query handling
